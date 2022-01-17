@@ -23,7 +23,7 @@ All shows are on the [Battlesnake Twitch](https://battlesnake.tv) at 7pm UTC. [F
 
 ## Joining the show
 
-Want to be a guest in the relay? Contact [Joe](https://twitter.com/jna_sh) or [Kevin](https://twitter.com/_phzn). Each guest will be building on the snake built in the show prior. You'll have approximately two weeks warning to know what terrible nonsense the last holder of the baton has gotten up to, to work out what you're going to do about it.
+Want to be a guest in the relay? Contact [Joe](https://twitter.com/jna_sh) or [Kevin](https://twitter.com/_phzn). Each guest will be building on the snake built in the show prior. You'll have approximately two weeks warning to know what terrible nonsense the last holder of the baton has gotten up to, to work out what you're going to do about it. Shows are live, broadcast on Twitch, via Streamyard. Every guest will be accompanied by at least one (usually both) of the hosts.
 
 Coding Badly strives to be a low-pressure, fun environment to enjoy silly code that does useless things. That isn't to say we don't welcome good code, but it is to say that if this is your first time live coding on a stream, or your first time using Javascript, or your first time seeing Battlesnake: do not worry, this is the space for you.
 
