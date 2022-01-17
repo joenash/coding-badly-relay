@@ -6,12 +6,6 @@ The Relay snake started out as the Battlesnake Javascript Starter. Where will it
 
 Check below for the schedule!
 
-## Technologies Used
-
-- [JavaScript](https://www.javascript.com/)
-- [Node.js](https://nodejs.dev/)
-- [Express](https://expressjs.com/)
-
 ## Schedule
 
 All shows are on the [BattleSnake Twitch](https://battlesnake.tv) at 7pm UTC. [Find your timezone](https://everytimezone.com/convert/utc/7pm).
@@ -26,3 +20,9 @@ All shows are on the [BattleSnake Twitch](https://battlesnake.tv) at 7pm UTC. [F
 | 21st April    |       |              |
 | 5th May       |       |              |
 | 19th May      |       |              |
+
+## Technologies Used (so far)
+
+- [JavaScript](https://www.javascript.com/)
+- [Node.js](https://nodejs.dev/)
+- [Express](https://expressjs.com/)
