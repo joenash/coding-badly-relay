@@ -1,7 +1,5 @@
 # Coding Badly Relay
 
-![Battlesnake Logo](https://media.battlesnake.com/social/StarterSnakeGitHubRepos_JavaScript.png)
-
 This is the Coding Badly Relay Snake. Each episode of Coding Badly, a new guest works on the snake, adding their own code and strategies. At the end of that episode, it's handed on, for the next person.
 
 The Relay snake started out as the Battlesnake Javascript Starter. Where will it end up?
