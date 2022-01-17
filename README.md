@@ -27,6 +27,8 @@ Want to be a guest in the relay? Contact [Joe](https://twitter.com/jna_sh) or [K
 
 Coding Badly strives to be a low-pressure, fun environment to enjoy silly code that does useless things. That isn't to say we don't welcome good code, but it is to say that if this is your first time live coding on a stream, or your first time using Javascript, or your first time seeing Battlesnake: do not worry, this is the space for you.
 
+All guests will be expected to abide by the Battlesnake Code of Conduct, both on air and in their submitted code.
+
 ## Technologies Used (so far)
 
 - [JavaScript](https://www.javascript.com/)
