@@ -13,7 +13,7 @@ All shows are on the [Battlesnake Twitch](https://battlesnake.tv) at 7pm UTC. [F
 | Date          | Guest | Final commit |
 | ------------- | ----- | ------------ |
 | 3rd February  |       |              |
-| 17th February |       |              |
+| 17th February | HELD  |              |
 | 3rd March     |       |              |
 | 17th March    |       |              |
 | 7th April     |       |              |
