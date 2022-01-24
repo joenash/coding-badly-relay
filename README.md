@@ -12,11 +12,11 @@ All shows are on the [Battlesnake Twitch](https://battlesnake.tv) at 7pm UTC. [F
 
 | Date          | Guest | Final commit |
 | ------------- | ----- | ------------ |
-| 3rd February  |       |              |
+| 3rd February  |   coreyja    |              |
 | 17th February | HELD  |              |
 | 3rd March     |       |              |
 | 17th March    |       |              |
-| 7th April     |       |              |
+| 7th April     |   penelope_zone    |              |
 | 21st April    |       |              |
 | 5th May       |       |              |
 | 19th May      |       |              |
