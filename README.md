@@ -13,7 +13,7 @@ All shows are on the [Battlesnake Twitch](https://battlesnake.tv) at 7pm UTC. [F
 | Date          | Guest | Final commit |
 | ------------- | ----- | ------------ |
 | 3rd February  |   coreyja    |              |
-| 17th February | HELD  |              |
+| 17th February | masonegger  |              |
 | 3rd March     | geeh  |              |
 | 17th March    |   nhcarrigan    |              |
 | 7th April     |   penelope_zone    |              |
