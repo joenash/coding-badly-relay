@@ -4,8 +4,6 @@ const { info, start, move, end } = require('./logic')
 
 require('../go/out/wasm_exec.js')
 
-
-
 async function run () {
   const go = new Go();
   const mod = await WebAssembly.compile(readFileSync('go/out/main.wasm'));
@@ -29,7 +27,14 @@ app.post("/start", (req, res) => {
 });
 
 app.post("/move", (req, res) => {
-    res.send(move(req.body))
+  const chosenMove = move(req.body);
+
+  console.log(chosenMove.move, ' will be alive', go_NEXT_BOARD_STATE_JS(
+    JSON.stringify(req.body),
+    JSON.stringify([{ Id: req.body.you.id, Move: chosenMove.move }]),
+  ));
+
+    res.send(chosenMove)
 });
 
 app.post("/end", (req, res) => {
