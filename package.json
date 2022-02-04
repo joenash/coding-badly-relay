@@ -4,7 +4,8 @@
   "description": "A simple Battlesnake written in JavaScript",
   "scripts": {
     "start": "node src/index.js",
-    "test": "jest --silent"
+    "test": "jest --silent",
+    "debug": "ndb src/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "jest": "^27.0.6"
+    "jest": "^27.0.6",
+    "ndb": "^1.1.5"
   }
 }
