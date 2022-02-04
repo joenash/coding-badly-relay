@@ -12,7 +12,7 @@ All shows are on the [Battlesnake Twitch](https://battlesnake.tv) at 7pm UTC. [F
 
 | Date          | Guest | Final commit |
 | ------------- | ----- | ------------ |
-| 3rd February  |   coreyja    |              |
+| 3rd February  |   coreyja    |       [ad5ba0d](https://github.com/joenash/coding-badly-relay/commit/ad5ba0d2076c312619089f68496bef29d484b3eb)       |
 | 17th February | masonegger  |              |
 | 3rd March     | geeh  |              |
 | 17th March    |   nhcarrigan    |              |
