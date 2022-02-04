@@ -34,3 +34,21 @@ All guests will be expected to abide by the Battlesnake Code of Conduct, both on
 - [JavaScript](https://www.javascript.com/)
 - [Node.js](https://nodejs.dev/)
 - [Express](https://expressjs.com/)
+- [Golang](https://go.dev/)
+- [WASM](https://webassembly.org/)
+- [Battlesnake Rules Repo](https://github.com/BattlesnakeOfficial/rules)
+
+## Handoffs
+
+### coreyja
+
+We decided to do some WASM! We compiled the Battlesnake Rules repo, written in Go, to WASM and are including it in our node snake.
+We expose a Go function that can be used to check if a given set of moves will cause death for a starting board state. We return the elimination cause
+and an empty string implies that the snake survived.
+
+To compile the Go source to a WASM file there is a `go/build.sh` script. Run this from the `go` subdirectory to compile the `main.wasm` file and copy the Go Exec JS file.
+
+```
+cd go
+./build
+```
