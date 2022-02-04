@@ -66,8 +66,9 @@ func nextBoardStateJS(this js.Value, args []js.Value) interface{} {
 
     me := nextBoardState.Snakes[0]
 
-    return me.EliminatedOnTurn
+    return me.EliminatedCause == ""
 }
+
 
 func toInt(arg interface {}) int32 {
     return int32(arg.(float64))
