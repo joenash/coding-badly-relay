@@ -29,7 +29,7 @@ app.post("/start", (req, res) => {
 app.post("/move", (req, res) => {
   const chosenMove = move(req.body);
 
-  console.log(chosenMove.move, ' will be alive', go_NEXT_BOARD_STATE_JS(
+  console.log(chosenMove.move, ' was killed by ', go_NEXT_BOARD_STATE_ELIMINATION_CAUSE(
     JSON.stringify(req.body),
     JSON.stringify([{ Id: req.body.you.id, Move: chosenMove.move }]),
   ));

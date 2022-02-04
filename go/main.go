@@ -13,7 +13,7 @@ func init() {
 	// available in JS land at the call time.
 	js.Global().Set("go_ADD_STUFF", js.FuncOf(add))
   js.Global().Set("go_GAME_BOARD_FROM_JS", js.FuncOf(gameBoardFromJS))
-  js.Global().Set("go_NEXT_BOARD_STATE_JS", js.FuncOf(nextBoardStateJS))
+  js.Global().Set("go_NEXT_BOARD_STATE_ELIMINATION_CAUSE", js.FuncOf(nextBoardStateEliminationCause))
 }
 
 func main() {
@@ -46,7 +46,7 @@ func gameBoardFromJS(this js.Value, args []js.Value) interface{} {
     return boardFromJson(boardStr).Turn
 }
 
-func nextBoardStateJS(this js.Value, args []js.Value) interface{} {
+func nextBoardStateEliminationCause(this js.Value, args []js.Value) interface{} {
     boardStr := args[0].String()
     moves := args[1].String()
 
@@ -66,7 +66,7 @@ func nextBoardStateJS(this js.Value, args []js.Value) interface{} {
 
     me := nextBoardState.Snakes[0]
 
-    return me.EliminatedCause == ""
+    return me.EliminatedCause
 }
 
 
