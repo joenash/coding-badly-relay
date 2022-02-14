@@ -18,7 +18,7 @@ All shows are on the [Battlesnake Twitch](https://battlesnake.tv) at 7pm UTC. [F
 | 17th March    |   nhcarrigan    |              |
 | 7th April     |   penelope_zone    |              |
 | 21st April    |       |              |
-| 5th May       |       |              |
+| 5th May       |   pachicodes   |              |
 | 19th May      |       |              |
 
 ## Joining the show
