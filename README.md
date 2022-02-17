@@ -1,4 +1,5 @@
 # Coding Badly Relay
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/masonegger/coding-badly-relay/tree/main)
 
 This is the Coding Badly Relay Snake. Each episode of Coding Badly, a new guest works on the snake, adding their own code and strategies. At the end of that episode, it's handed on, for the next person.
 
