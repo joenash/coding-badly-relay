@@ -18,7 +18,7 @@ jobs:
         go-version: 1.15
 
     - name: Run Build
-      run: build.sh
+      run: ./build.sh
       working-directory: go
         
     - name: Upload assets
