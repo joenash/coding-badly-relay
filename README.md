@@ -53,3 +53,35 @@ To compile the Go source to a WASM file there is a `go/build.sh` script. Run thi
 cd go
 ./build
 ```
+
+### Mason Egger ([@masonegger](https://twitter.com/masonegger)) and Matt Cowley ([@mattipv4](https://twitter.com/MattIPv4))
+
+Mason joined to help tackle the "How do we deploy this?" part of the coding relay.
+After stumbling around yaml for a bit, human yaml validator Matt Cowley appeared to help.
+We setup a GitHub action to build the Go WASM from the previous stream. We also setup
+the Deploy to DigitalOcean button so anyone can deploy this battlesnake to [DigitalOcean App Platform](https://www.digitalocean.com/products/app-platform) with just a few clicks
+
+**Notes for deploying** If you fork this repository, you'll need to change the URL in the Deploy to DigitalOcean Button in order for it to point to your github repository, as well as modify the `.do/deploy.template.yaml` to also point to your repository.
+
+**Tricky Note** The github repo username/repo is CASE SENSITIVE, so ya. Don't fall down that rabbit hole.
+
+`[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/<YOUR_GITHUB_USERNAME_HERE>/coding-badly-relay/tree/main)`
+
+Change the yaml as so in `.do/deploy.template.yaml`
+```yaml
+spec:
+  name: coding-badly-relay-snake
+  services:
+  - environment_slug: node-js
+    github:
+      branch: main
+      repo: <YOUR_GITHUB_USERNAME_HERE>/coding-badly-relay
+      deploy_on_push: true
+    name: coding-badly-relay-snake
+    build_command: mkdir -p go/out && wget -O go/out/main.wasm https://github.com/joenash/coding-badly-relay/releases/download/latest/main.wasm && wget -O go/out/wasm_exec.js https://github.com/joenash/coding-badly-relay/releases/download/latest/wasm_exec.js
+```
+
+If you decide to modify the WASM files, you'll need to update the build command (replace joenash with your github username) to grab your files, as well as manually trigger the GitHub Action to build your own WASM files.
+
+If you want to deploy your BattleSnake to DigitalOcean and are setting up a new account, you can get
+$100 free credit for 60 days by going to [do.co/battlesnake](https://do.co/battlesnake).
