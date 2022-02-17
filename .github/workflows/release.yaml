@@ -25,6 +25,6 @@ goreleaser:
         version: latest
         args: release --rm-dist
         env: 
-          GOOS: js
-          GOARCH: wasm
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GOOS: js
+            GOARCH: wasm
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
