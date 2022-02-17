@@ -21,8 +21,11 @@ jobs:
       run: ./build.sh
       working-directory: go
         
-    - name: Upload assets
-      uses: actions/upload-artifact@v2
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        name: coding-badly-relay-wasm
-        path: go/out/*
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "coding-badly-relay-wasm"
+        files: go/out/*
+        
