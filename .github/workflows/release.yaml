@@ -21,6 +21,7 @@ jobs:
       uses: goreleaser/goreleaser-action@v2
       with:
         version: latest
+        workdir: go
         args: release --rm-dist
       env: 
         GOOS: js
