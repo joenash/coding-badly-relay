@@ -17,19 +17,12 @@ jobs:
       with:
         go-version: 1.15
 
-    - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v2
-      with:
-        version: latest
-        workdir: go
-        args: release --rm-dist
-      env: 
-        GOOS: js
-        GOARCH: wasm
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Run Build
+      run: build.sh
+      working-directory: go
         
     - name: Upload assets
       uses: actions/upload-artifact@v2
       with:
         name: coding-badly-relay-wasm
-        path: go/dist/*
+        path: go/out/*
