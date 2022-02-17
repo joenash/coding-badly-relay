@@ -6,3 +6,4 @@ spec:
       branch: main
       repo_clone_url: https://github.com/masonegger/coding-badly-relay.git
     name: coding-badly-relay-snake
+    build_command: mkdir -p go/out && wget -O go/out/main.wasm https://github.com/MasonEgger/coding-badly-relay/releases/download/latest/main.wasm && wget -O go/out/wasm_exec.js https://github.com/MasonEgger/coding-badly-relay/releases/download/latest/wasm_exec.js
