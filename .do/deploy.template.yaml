@@ -1,0 +1,8 @@
+spec:
+  name: coding-badly-relay-snake
+  services:
+  - environment_slug: node-js
+    git:
+      branch: main
+      repo_clone_url: https://github.com/masonegger/coding-badly-relay.git
+    name: coding-badly-relay-snake
