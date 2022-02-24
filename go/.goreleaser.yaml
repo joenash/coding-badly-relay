@@ -1,0 +1,6 @@
+builds:
+  - goos:
+      - js
+      
+    goarch:
+      - wasm

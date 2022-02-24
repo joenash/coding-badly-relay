@@ -1,0 +1,10 @@
+spec:
+  name: coding-badly-relay-snake
+  services:
+  - environment_slug: node-js
+    github:
+      branch: main
+      repo: joenash/coding-badly-relay
+      deploy_on_push: true
+    name: coding-badly-relay-snake
+    build_command: mkdir -p go/out && wget -O go/out/main.wasm https://github.com/joenash/coding-badly-relay/releases/download/latest/main.wasm && wget -O go/out/wasm_exec.js https://github.com/joenash/coding-badly-relay/releases/download/latest/wasm_exec.js
