@@ -54,6 +54,8 @@ cd go
 ./build
 ```
 
+> Adding `fmt.Println` breaks the connection between the Go and JS
+
 ### Mason Egger ([@masonegger](https://twitter.com/masonegger)) and Matt Cowley ([@mattipv4](https://twitter.com/MattIPv4))
 
 Mason joined to help tackle the "How do we deploy this?" part of the coding relay.
