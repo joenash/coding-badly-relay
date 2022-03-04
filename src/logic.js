@@ -3,7 +3,7 @@ function info() {
     const response = {
         apiversion: "1",
         author: "",
-        color: "#1776FA",
+        color: "#F22F46",
         head: "do-sammy",
         tail: "do-sammy"
     }
@@ -26,30 +26,29 @@ function move(gameState) {
         right: true
     }
 
-    // Step 0: Don't let your Battlesnake move back on its own neck
-    const myHead = gameState.you.head
-    const myNeck = gameState.you.body[1]
-    if (myNeck.x < myHead.x) {
-        possibleMoves.left = false
-    } else if (myNeck.x > myHead.x) {
-        possibleMoves.right = false
-    } else if (myNeck.y < myHead.y) {
-        possibleMoves.down = false
-    } else if (myNeck.y > myHead.y) {
-        possibleMoves.up = false
+    console.log(gameState);
+
+
+    const snakesOnBoard = gameState.board.snakes.slice(1).map((snake) => ({Id: snake.id, Move: 'up'}));
+
+    // this doesn't work because it selects a move (correctly) if a different snake would die moving up, we can't pass
+    // 'up' as a default to all snakes -- we only tried to do that to brute force a different problem that I've
+    // forgotten. GLHF
+
+    for (const move in possibleMoves) {
+
+        const didWeDie = go_NEXT_BOARD_STATE_ELIMINATION_CAUSE(
+            JSON.stringify(gameState),
+            JSON.stringify([{Id: gameState.you.id, Move: move}, ...snakesOnBoard]),
+        );
+
+        console.log(didWeDie);
+
+        if (didWeDie) {
+            possibleMoves[move] = false;
+        }
     }
 
-    // TODO: Step 1 - Don't hit walls.
-    // Use information in gameState to prevent your Battlesnake from moving beyond the boundaries of the board.
-    // const boardWidth = gameState.board.width
-    // const boardHeight = gameState.board.height
-
-    // TODO: Step 2 - Don't hit yourself.
-    // Use information in gameState to prevent your Battlesnake from colliding with itself.
-    // const mybody = gameState.you.body
-
-    // TODO: Step 3 - Don't collide with others.
-    // Use information in gameState to prevent your Battlesnake from colliding with others.
 
     // TODO: Step 4 - Find food.
     // Use information in gameState to seek out and find food.
@@ -58,7 +57,7 @@ function move(gameState) {
     // TODO: Step 5 - Select a move to make based on strategy, rather than random.
     const safeMoves = Object.keys(possibleMoves).filter(key => possibleMoves[key])
     const response = {
-        move: safeMoves[Math.floor(Math.random() * safeMoves.length)],
+        move: safeMoves.shift()
     }
 
     console.log(`${gameState.game.id} MOVE ${gameState.turn}: ${response.move}`)
