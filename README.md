@@ -51,7 +51,7 @@ To compile the Go source to a WASM file there is a `go/build.sh` script. Run thi
 
 ```
 cd go
-./build
+./build.sh
 ```
 
 > Adding `fmt.Println` breaks the connection between the Go and JS
