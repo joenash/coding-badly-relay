@@ -9,7 +9,7 @@ Check below for the schedule!
 
 ## Schedule
 
-All shows are on the [Battlesnake Twitch](https://battlesnake.tv) at 7pm UTC. [Find your timezone](https://everytimezone.com/convert/utc/7pm).
+All shows are on the [Battlesnake Twitch](https://battlesnake.tv) at 6pm UTC. [Find your timezone](https://everytimezone.com/convert/pdt/11am).
 
 | Date          | Guest | Final commit |
 | ------------- | ----- | ------------ |
