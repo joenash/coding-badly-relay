@@ -1,5 +1,4 @@
 import { GameState } from "./interfaces/GameState";
-import { Move } from "./interfaces/Move";
 import { getValidMove } from "./modules/getValidMove";
 require("../go/out/wasm_exec.js");
 

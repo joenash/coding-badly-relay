@@ -33,6 +33,7 @@ All guests will be expected to abide by the Battlesnake Code of Conduct, both on
 ## Technologies Used (so far)
 
 - [JavaScript](https://www.javascript.com/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [Node.js](https://nodejs.dev/)
 - [Express](https://expressjs.com/)
 - [Golang](https://go.dev/)
@@ -84,6 +85,14 @@ spec:
 ```
 
 If you decide to modify the WASM files, you'll need to update the build command (replace joenash with your github username) to grab your files, as well as manually trigger the GitHub Action to build your own WASM files.
+
+## nhcarrigan
+
+We converted the project to use TypeScript. Aside from building the Go files, you'll now need to build the TypeScript files. The `package.json` is updated to handle the TS - run `npm run build` to compile the TS files, and `npm start` to run your server.
+
+**NOTE: Currently the tests are not functional as the Go modules aren't loading correctly.**
+
+The `go` modules also don't have proper type definitions, so you'll want to use `//@ts-expect-error` above any lines where you use them, to suppress the compiler error.
 
 If you want to deploy your BattleSnake to DigitalOcean and are setting up a new account, you can get
 $100 free credit for 60 days by going to [do.co/battlesnake](https://do.co/battlesnake).
