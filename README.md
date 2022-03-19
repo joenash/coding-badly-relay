@@ -18,7 +18,7 @@ All shows are on the [Battlesnake Twitch](https://battlesnake.tv) at 6pm UTC. [F
 | 3rd March     | geeh  |       [e98e3fc](https://github.com/joenash/coding-badly-relay/commit/e98e3fc7a4b49eb8059561fdd1a5becafbfab815)       |
 | 17th March    |   nhcarrigan    |        [72d2883](https://github.com/joenash/coding-badly-relay/commit/72d2883cfdcfe55bff2d37afcf6763574199925e)      |
 | 7th April     |   penelope_zone    |              |
-| 21st April    |       |              |
+| 21st April    |   GeoffreyPeart    |              |
 | 5th May       |   pachicodes   |              |
 | 19th May      |       |              |
 
