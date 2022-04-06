@@ -1,8 +1,8 @@
+const wasm = require("../src/wasm");
+
 import { GameState } from "../src/interfaces/GameState";
 
 import { info, move } from "../src/logic";
-
-require("../go/out/wasm_exec.js");
 
 function createGameState(myBattlesnake: GameState["you"]): GameState {
   return {
@@ -45,6 +45,10 @@ function createBattlesnake(
     },
   };
 }
+
+beforeAll(async () => {
+  await wasm.run();
+});
 
 describe("Battlesnake API Version", () => {
   test("should be api version 1", () => {
