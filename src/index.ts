@@ -1,7 +1,9 @@
+globalThis.crypto = require('crypto').webcrypto;
+require("../go/out/wasm_exec.js");
+
 import express from "express";
 import { readFileSync } from "fs";
 import { info, start, move, end } from "./logic";
-require("../go/out/wasm_exec.js");
 
 async function run() {
     // @ts-expect-error Go is imported through the require statement.

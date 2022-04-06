@@ -1,6 +1,5 @@
 import { GameState } from "./interfaces/GameState";
 import { getValidMove } from "./modules/getValidMove";
-require("../go/out/wasm_exec.js");
 
 export function info() {
   console.log("INFO");
