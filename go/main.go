@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 	"syscall/js"
 	"time"
 
@@ -49,16 +48,11 @@ func gameBoardFromJS(this js.Value, args []js.Value) interface{} {
 }
 
 func nextBoardStateEliminationCause(this js.Value, args []js.Value) interface{} {
-	boardStr := args[0].String()
-	game := args[1]
-	moves := args[2].String()
+	game := args[0]
+	moves := args[1].String()
 
-	// var board rules.BoardState
-	board2 := boardFromJson(boardStr)
 	board := boardFromJSValue(game)
 	// check boards match
-
-	equal := reflect.DeepEqual(board, board2)
 
 	var movesArr []rules.SnakeMove
 	json.Unmarshal([]byte(moves), &movesArr)
@@ -73,7 +67,7 @@ func nextBoardStateEliminationCause(this js.Value, args []js.Value) interface{} 
 
 	me := nextBoardState.Snakes[0]
 
-	return js.ValueOf([]interface{}{me.EliminatedCause, equal})
+	return js.ValueOf([]interface{}{me.EliminatedCause, true})
 }
 
 func toInt(arg interface{}) int32 {
