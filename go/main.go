@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 	"syscall/js"
 	"time"
 
@@ -50,13 +49,11 @@ func gameBoardFromJS(this js.Value, args []js.Value) interface{} {
 
 func nextBoardStateEliminationCause(this js.Value, args []js.Value) interface{} {
 	game := args[0]
-	moves := args[1].String()
-	movesJS := args[2]
+	movesJS := args[1]
 
 	board := boardFromJSValue(game)
 	// check boards match
 
-	var movesArr []rules.SnakeMove
 	var movesArr2 []rules.SnakeMove
 	// movesJS is an array of js values of strings and strings like "move", unpack it in to a rules.SnakeMove
 	for i := 0; i < movesJS.Length(); i++ {
@@ -67,24 +64,17 @@ func nextBoardStateEliminationCause(this js.Value, args []js.Value) interface{} 
 		})
 	}
 
-	json.Unmarshal([]byte(moves), &movesArr)
-
-	// deep equals moves arrays to confirm the new thing works
-	equals := reflect.DeepEqual(movesArr, movesArr2)
-
-	fmt.Println("movesArr: ", movesArr, "movesArr2: ", movesArr2)
-
 	standard := rules.StandardRuleset{
 		FoodSpawnChance:     5,
 		MinimumFood:         3,
 		HazardDamagePerTurn: 0,
 	}
 
-	nextBoardState, _ := standard.CreateNextBoardState(&board, movesArr)
+	nextBoardState, _ := standard.CreateNextBoardState(&board, movesArr2)
 
 	me := nextBoardState.Snakes[0]
 
-	return js.ValueOf([]interface{}{me.EliminatedCause, equals})
+	return js.ValueOf([]interface{}{me.EliminatedCause, true})
 }
 
 func toInt(arg interface{}) int32 {
