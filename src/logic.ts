@@ -43,7 +43,8 @@ export function move(gameState: GameState) {
     // @ts-expect-error Go modules not typed.
     const values = go_NEXT_BOARD_STATE_ELIMINATION_CAUSE(
       gameState,
-      JSON.stringify([{ Id: gameState.you.id, Move: move }, ...snakesOnBoard])
+      JSON.stringify([{ Id: gameState.you.id, Move: move }, ...snakesOnBoard]),
+      [{ Id: gameState.you.id, Move: move }, ...snakesOnBoard]
     );
 
     const didWeDie = values[0];
