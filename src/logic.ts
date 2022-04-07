@@ -7,7 +7,7 @@ export function info() {
     apiversion: "1",
     author: "",
     color: "#F22F46",
-    head: "do-sammy",
+    head: "trans-rights-scarf",
     tail: "do-sammy",
   };
   return response;
