@@ -41,10 +41,20 @@ export function move(gameState: GameState) {
 
   for (const move in possibleMoves) {
     // @ts-expect-error Go modules not typed.
-    const didWeDie = go_NEXT_BOARD_STATE_ELIMINATION_CAUSE(
+    const values = go_NEXT_BOARD_STATE_ELIMINATION_CAUSE(
       JSON.stringify(gameState),
+      gameState,
       JSON.stringify([{ Id: gameState.you.id, Move: move }, ...snakesOnBoard])
     );
+
+    const didWeDie = values[0];
+    const equal_games = values[1];
+
+    // assert equal_games is true
+    if (!equal_games) {
+      throw new Error("equal_games is not 1");
+    }
+
 
     console.log(didWeDie);
 

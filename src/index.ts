@@ -1,3 +1,5 @@
+globalThis.crypto = require('crypto').webcrypto;
+require("../go/out/wasm_exec.js");
 const wasm = require("./wasm");
 
 import express from "express";
