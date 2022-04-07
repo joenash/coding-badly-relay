@@ -72,9 +72,12 @@ func nextBoardStateEliminationCause(this js.Value, args []js.Value) interface{} 
 
 	nextBoardState, _ := standard.CreateNextBoardState(&board, movesArr2)
 
-	me := nextBoardState.Snakes[0]
-
-	return js.ValueOf([]interface{}{me.EliminatedCause, true})
+	var eliminationCauses []interface{}
+	for _, s := range nextBoardState.Snakes {
+		me := s.EliminatedCause
+		eliminationCauses = append(eliminationCauses, js.ValueOf(me))
+	}
+	return js.ValueOf(eliminationCauses)
 }
 
 func toInt(arg interface{}) int32 {

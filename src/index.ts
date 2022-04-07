@@ -20,7 +20,7 @@ app.post("/start", (req, res) => {
 
 app.post("/move", (req, res) => {
     const chosenMove = move(req.body);
-    console.log(chosenMove.move);
+    //console.log(chosenMove.move);
 
     res.send(chosenMove)
 });
