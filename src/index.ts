@@ -1,17 +1,7 @@
-import express from "express";
-import { readFileSync } from "fs";
-import { info, start, move, end } from "./logic";
-require("../go/out/wasm_exec.js");
+const wasm = require("./wasm");
 
-async function run() {
-    // @ts-expect-error Go is imported through the require statement.
-    const go = new Go();
-    const mod = await WebAssembly.compile(readFileSync('go/out/main.wasm'));
-    const inst = await WebAssembly.instantiate(mod, go.importObject);
-    console.log('go about to run')
-    go.run(inst);
-    await new Promise(r => setTimeout(r, 2000));
-}
+import express from "express";
+import { info, start, move, end } from "./logic";
 
 const app = express()
 app.use(express.json())
@@ -37,7 +27,7 @@ app.post("/end", (req, res) => {
     res.send(end(req.body))
 });
 
-run().then(() => {
+wasm.run().then(() => {
     console.log('Wasm loaded')
     // @ts-expect-error Typings soon:tm:
     console.log('Adding in Go', go_ADD_STUFF(4, 5));
