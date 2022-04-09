@@ -111,16 +111,10 @@ open .vscode/settings.json (cmd+shift+p and then "open workspace settings.json")
 }
 ```
 
-The entire build/run loop is now one script: `./script/server`.
+The entire build/run loop is now one script: `./script/server`. We run some tests
+at the start of the server. If these fail they do print a nasty backtrace, but
+they don't crash the server. BE CAREFUL.
 
-I removed all the json serialization between TypeScript and Go, now values are passed using
-[`js.Value`](https://pkg.go.dev/syscall/js) from golang.
-
-
-We're implementing minmax in go now. And just so that you know, anywhere we have an array of moves, snake ids, etc, you_id is always the 0th element.
-
-Features to implement:
-
-- [ ] passing board states and heuristic results from go to typescript
-- [ ] building the minmax tree in typescript
-- [ ] go and typescript tests, and making them excellent `./script/test`
+In terms of actual behaviour: you'll find a minmax package in the go code that implements
+minmax. Tweaking this can be as easy as playing with the heuristic function, but braver
+programmers than I might also want to mess with depth, alpha beta pruning, and other options.
