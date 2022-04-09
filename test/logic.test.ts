@@ -75,4 +75,5 @@ describe("Battlesnake Moves", () => {
       expect(allowedMoves).toContain(moveResponse.move);
     }
   });
+
 });
