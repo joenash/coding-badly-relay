@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -euxo pipefail
+(cd go && ./build.sh)
+npm run build
+PORT=18080 npm start

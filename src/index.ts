@@ -1,3 +1,5 @@
+globalThis.crypto = require('crypto').webcrypto;
+require("../go/out/wasm_exec.js");
 const wasm = require("./wasm");
 
 import express from "express";
@@ -17,8 +19,9 @@ app.post("/start", (req, res) => {
 });
 
 app.post("/move", (req, res) => {
+    console.log(JSON.stringify(req.body));
     const chosenMove = move(req.body);
-    console.log(chosenMove.move);
+    //console.log(chosenMove.move);
 
     res.send(chosenMove)
 });
@@ -29,8 +32,6 @@ app.post("/end", (req, res) => {
 
 wasm.run().then(() => {
     console.log('Wasm loaded')
-    // @ts-expect-error Typings soon:tm:
-    console.log('Adding in Go', go_ADD_STUFF(4, 5));
     // Start the Express server
     app.listen(port, () => {
         console.log(`Starting Battlesnake Server at http://0.0.0.0:${port}...`)

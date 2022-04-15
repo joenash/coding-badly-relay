@@ -96,3 +96,25 @@ The `go` modules also don't have proper type definitions, so you'll want to use 
 
 If you want to deploy your BattleSnake to DigitalOcean and are setting up a new account, you can get
 $100 free credit for 60 days by going to [do.co/battlesnake](https://do.co/battlesnake).
+
+
+# Penelope
+
+Alrighty then.  Firstly: you need to be using a modern-ish node. `nvm use 16` works for me.
+
+If you're using VS Code, you need to set Go in to WASM mode:
+
+open .vscode/settings.json (cmd+shift+p and then "open workspace settings.json")
+```json
+{
+    "go.toolsEnvVars": {"GOOS": "js", "GOARCH": "wasm"}
+}
+```
+
+The entire build/run loop is now one script: `./script/server`. We run some tests
+at the start of the server. If these fail they do print a nasty backtrace, but
+they don't crash the server. BE CAREFUL.
+
+In terms of actual behaviour: you'll find a minmax package in the go code that implements
+minmax. Tweaking this can be as easy as playing with the heuristic function, but braver
+programmers than I might also want to mess with depth, alpha beta pruning, and other options.
