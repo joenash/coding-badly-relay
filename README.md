@@ -118,3 +118,10 @@ they don't crash the server. BE CAREFUL.
 In terms of actual behaviour: you'll find a minmax package in the go code that implements
 minmax. Tweaking this can be as easy as playing with the heuristic function, but braver
 programmers than I might also want to mess with depth, alpha beta pruning, and other options.
+
+## Rob
+
+The server should now support all game modes (including wrapped and constrictor) and respect hazards!
+The minmax heuristic was also tweaked in a possibly no-op fashion.
+
+Use Penelope's instructions above - the setup is unchanged. Don't forget to `npm install` before you run the server!
