@@ -62,4 +62,43 @@ func Tests() {
 			panic("tests failed")
 		}
 	}
+
+	{
+		gamejs := js.ValueOf(map[string]interface{}{
+			"game": map[string]interface{}{
+				"id": "game-00fe20da-94ad-11ea-bb37",
+				"ruleset": map[string]interface{}{
+					"name":    "wrapped",
+					"version": "v.1.2.3",
+					"settings": map[string]interface{}{
+						"foodSpawnChance":     25,
+						"minimumFood":         1,
+						"hazardDamagePerTurn": 33,
+						"hazardMap":           "hz_spiral",
+						"hazardMapAuthor":     "altersaddle",
+						"royale": map[string]interface{}{
+							"shrinkEveryNTurns": 5,
+						},
+						"squad": map[string]interface{}{
+							"allowBodyCollisions": true,
+							"sharedElimination":   true,
+							"sharedHealth":        true,
+							"sharedLength":        true,
+						},
+					},
+				},
+				"source":  "league",
+				"timeout": 500,
+			},
+		})
+		ruleset := serde.RulesetFromJSValue(gamejs)
+		if ruleset.Name() != "wrapped" {
+			fmt.Println("Unexpected ruleset name: ", ruleset.Name())
+			panic("tests failed")
+		}
+		if ruleset.Settings().HazardDamagePerTurn != 33 {
+			fmt.Println("Unexpected value for hazard damage: ", ruleset.Settings().HazardDamagePerTurn)
+			panic("tests failed")
+		}
+	}
 }
