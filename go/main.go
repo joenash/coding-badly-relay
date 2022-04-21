@@ -35,7 +35,22 @@ func minMax(this js.Value, args []js.Value) interface{} {
 
 	boardObject := serde.BoardFromJSValue(gameJSObject)
 	rulesetName := serde.RulesetNameFromJSValue(gameJSObject)
-	bestMove, score := minmax.RealMinMax(&boardObject, youID, depth, rulesetName)
+
+	var ruleset rules.Ruleset
+	standard := rules.StandardRuleset{
+		FoodSpawnChance:     5,
+		MinimumFood:         3,
+		HazardDamagePerTurn: 14,
+	}
+	if rulesetName == "wrapped" {
+		ruleset = &rules.WrappedRuleset{
+			StandardRuleset: standard,
+		}
+	} else {
+		ruleset = &standard
+	}
+
+	bestMove, score := minmax.RealMinMax(ruleset, &boardObject, youID, depth)
 	jsBestMove := js.ValueOf(bestMove)
 	jsScore := js.ValueOf(score)
 	return []interface{}{jsBestMove, jsScore}
