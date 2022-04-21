@@ -19,7 +19,7 @@ func RealMinMax(board *rules.BoardState, youID string, depth int, rulesetName st
 	standard := rules.StandardRuleset{
 		FoodSpawnChance:     5,
 		MinimumFood:         3,
-		HazardDamagePerTurn: 0,
+		HazardDamagePerTurn: 14,
 	}
 	if rulesetName == "wrapped" {
 		ruleset = &rules.WrappedRuleset{
