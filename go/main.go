@@ -34,7 +34,8 @@ func minMax(this js.Value, args []js.Value) interface{} {
 	depth := args[2].Int()
 
 	boardObject := serde.BoardFromJSValue(gameJSObject)
-	bestMove, score := minmax.RealMinMax(&boardObject, youID, depth)
+	rulesetName := serde.RulesetNameFromJSValue(gameJSObject)
+	bestMove, score := minmax.RealMinMax(&boardObject, youID, depth, rulesetName)
 	jsBestMove := js.ValueOf(bestMove)
 	jsScore := js.ValueOf(score)
 	return []interface{}{jsBestMove, jsScore}

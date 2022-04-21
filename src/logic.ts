@@ -30,7 +30,7 @@ export function end(gameState: GameState) {
   console.log(`${gameState.game.id} END\n`);
 }
 
-export function move(gameState: GameState)  {
+export function move(gameState: GameState) {
   let possibleMoves: { [key: string]: boolean } = {
     up: true,
     down: true,
@@ -46,6 +46,6 @@ export function move(gameState: GameState)  {
     move: move,
   };
 
-  //console.log(`${gameState.game.id} MOVE ${gameState.turn}: ${response.move}`);
+  console.log(`${gameState.game.id} MOVE ${gameState.turn}: ${response.move}`);
   return response;
 }

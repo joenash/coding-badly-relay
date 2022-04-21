@@ -1,8 +1,6 @@
 package minmax
 
 import (
-	"fmt"
-
 	"github.com/BattlesnakeOfficial/rules"
 )
 
@@ -24,7 +22,7 @@ func buildSnakeIds(board *rules.BoardState, youID string, countOfAliveSnakes int
 	return snakeIds
 }
 
-func filterForValidMoves(board *rules.BoardState, snakeId string, possibleMoves []string) []string {
+func filterForValidMoves(rulesetName string, board *rules.BoardState, snakeId string, possibleMoves []string) []string {
 	// find the snake in the snakes array
 	snakeIdx := -1
 
@@ -40,24 +38,28 @@ func filterForValidMoves(board *rules.BoardState, snakeId string, possibleMoves 
 	head := snake.Body[0]
 	validMoves := []string{}
 
-	// eliminate top down left right
-	for _, move := range possibleMoves {
-		invalid := false
-		if move == rules.MoveUp && head.Y == board.Height-1 {
-			invalid = true
+	if rulesetName != "wrapped" {
+		// eliminate top down left right
+		for _, move := range possibleMoves {
+			invalid := false
+			if move == rules.MoveUp && head.Y == board.Height-1 {
+				invalid = true
+			}
+			if move == rules.MoveDown && head.Y == 0 {
+				invalid = true
+			}
+			if move == rules.MoveLeft && head.X == 0 {
+				invalid = true
+			}
+			if move == rules.MoveRight && head.X == board.Width-1 {
+				invalid = true
+			}
+			if !invalid {
+				validMoves = append(validMoves, move)
+			}
 		}
-		if move == rules.MoveDown && head.Y == 0 {
-			invalid = true
-		}
-		if move == rules.MoveLeft && head.X == 0 {
-			invalid = true
-		}
-		if move == rules.MoveRight && head.X == board.Width-1 {
-			invalid = true
-		}
-		if !invalid {
-			validMoves = append(validMoves, move)
-		}
+	} else {
+		validMoves = possibleMoves
 	}
 
 	possibleMoves = validMoves
@@ -88,7 +90,7 @@ func filterForValidMoves(board *rules.BoardState, snakeId string, possibleMoves 
 	return validMoves
 }
 
-func buildPossibleMoves(countOfAliveSnakes int, board *rules.BoardState, snakeIds []string, depth int) [][]string {
+func buildPossibleMoves(rulesetName string, countOfAliveSnakes int, board *rules.BoardState, snakeIds []string, depth int) [][]string {
 	possibleMovesForSnakes := make([][]string, countOfAliveSnakes)
 	for i := 0; i < countOfAliveSnakes; i++ {
 		newAllMoves := make([]string, len(allMoves))
@@ -97,10 +99,7 @@ func buildPossibleMoves(countOfAliveSnakes int, board *rules.BoardState, snakeId
 	}
 
 	for i := 0; i < countOfAliveSnakes; i++ {
-		possibleMovesForSnakes[i] = filterForValidMoves(board, snakeIds[i], possibleMovesForSnakes[i])
-	}
-	if depth == 3 {
-		fmt.Println("possible moves for snakes: ", possibleMovesForSnakes)
+		possibleMovesForSnakes[i] = filterForValidMoves(rulesetName, board, snakeIds[i], possibleMovesForSnakes[i])
 	}
 	return possibleMovesForSnakes
 }

@@ -30,7 +30,7 @@ func Tests() {
 		snakeIds := buildSnakeIds(board, youID, countOfAliveSnakes)
 
 		// repeat all moves count of snakes times
-		possibleMovesForSnakes := buildPossibleMoves(countOfAliveSnakes, board, snakeIds, 3)
+		possibleMovesForSnakes := buildPossibleMoves("standard", countOfAliveSnakes, board, snakeIds, 3)
 
 		if !reflect.DeepEqual([][]string{{"down", "right", "left"}, {"up", "down", "left"}}, possibleMovesForSnakes) {
 			fmt.Println("possibleMovesForSnakes is not as expected", possibleMovesForSnakes)
@@ -44,7 +44,7 @@ func Tests() {
 		snakeIds := buildSnakeIds(board, youID, countOfAliveSnakes)
 
 		// repeat all moves count of snakes times
-		possibleMovesForSnakes := buildPossibleMoves(countOfAliveSnakes, board, snakeIds, 3)
+		possibleMovesForSnakes := buildPossibleMoves("standard", countOfAliveSnakes, board, snakeIds, 3)
 
 		if !reflect.DeepEqual([][]string{{"up", "right", "left"}, {"up", "down", "right"}}, possibleMovesForSnakes) {
 			fmt.Println("possibleMovesForSnakes is not as expected", possibleMovesForSnakes)
@@ -55,7 +55,7 @@ func Tests() {
 	{
 		json_string := `{"game":{"id":"e7005bc9-1ec7-4ad7-bb9b-f75e7f6d5f2a","ruleset":{"name":"standard","version":"?","settings":{"foodSpawnChance":15,"minimumFood":1,"hazardDamagePerTurn":14,"royale":{},"squad":{"allowBodyCollisions":false,"sharedElimination":false,"sharedHealth":false,"sharedLength":false}}},"timeout":500,"source":"custom"},"turn":25,"board":{"width":11,"height":11,"food":[{"x":1,"y":0}],"hazards":[],"snakes":[{"id":"gs_r9hGXXcptJ4Kwq3PDqtGKgCY","name":"does this work lol (original)","body":[{"x":6,"y":9},{"x":5,"y":9},{"x":4,"y":9},{"x":4,"y":8},{"x":5,"y":8},{"x":5,"y":7},{"x":5,"y":6}],"health":98,"latency":63,"head":{"x":6,"y":9},"length":7,"shout":"","squad":""},{"id":"gs_BKVtBTjpBbCbmy4mcRjRB6J7","name":"badly","body":[{"x":7,"y":8},{"x":7,"y":7},{"x":7,"y":6},{"x":7,"y":5}],"health":77,"latency":318,"head":{"x":7,"y":8},"length":4,"shout":"","squad":""}]},"you":{"id":"gs_BKVtBTjpBbCbmy4mcRjRB6J7","name":"badly","body":[{"x":7,"y":8},{"x":7,"y":7},{"x":7,"y":6},{"x":7,"y":5}],"health":77,"latency":318,"head":{"x":7,"y":8},"length":4,"shout":"","squad":""}}`
 		board, youID := fixtureToBoard(json_string)
-		best_move, _ := RealMinMax(board, youID, 3)
+		best_move, _ := RealMinMax(board, youID, 3, "standard")
 		if best_move != "right" {
 			fmt.Println("best_move is not as expected", best_move)
 			panic("tests failed")

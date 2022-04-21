@@ -20,6 +20,12 @@ func toPointArrayJS(arr js.Value) []rules.Point {
 	return positions
 }
 
+func RulesetNameFromJSValue(gamejs js.Value) string {
+	game := gamejs.Get("game")
+	ruleset := game.Get("ruleset")
+	return ruleset.Get("name").String()
+}
+
 func BoardFromJSValue(gamejs js.Value) rules.BoardState {
 	board := gamejs.Get("board")
 	food := board.Get("food")
