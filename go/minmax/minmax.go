@@ -10,7 +10,7 @@ const (
 	MAX_OPPONENT_SNAKES = 3
 )
 
-func RealMinMax(board *rules.BoardState, youID string, depth int) (string, float32) {
+func RealMinMax(ruleset rules.Ruleset, board *rules.BoardState, youID string, depth int) (string, float32) {
 	countOfAliveSnakes := len(board.Snakes)
 
 	snakeIds := buildSnakeIds(board, youID, countOfAliveSnakes)
@@ -19,13 +19,7 @@ func RealMinMax(board *rules.BoardState, youID string, depth int) (string, float
 	// the moves that won't take them off the board, and won't move them in to their neck
 	// there is a possible bug here where that leaves 0 moves left, which will break everything
 	// so do pay attention for that
-	possibleMovesForSnakes := buildPossibleMoves(countOfAliveSnakes, board, snakeIds, depth)
-
-	standard := rules.StandardRuleset{
-		FoodSpawnChance:     5,
-		MinimumFood:         3,
-		HazardDamagePerTurn: 0,
-	}
+	possibleMovesForSnakes := buildPossibleMoves(ruleset.Name(), countOfAliveSnakes, board, snakeIds, depth)
 
 	// take the cartesian product of all moves that we can make, so that we
 	// simulate all possible forward game states
@@ -51,7 +45,7 @@ func RealMinMax(board *rules.BoardState, youID string, depth int) (string, float
 
 		// run the simulation of the game with the given moves, this uses the battlesnake
 		// rules repo
-		newBoard, err := standard.CreateNextBoardState(board, movesWithSnakeIds)
+		newBoard, err := ruleset.CreateNextBoardState(board, movesWithSnakeIds)
 		if err != nil {
 			panic(err)
 		}
@@ -83,7 +77,7 @@ func RealMinMax(board *rules.BoardState, youID string, depth int) (string, float
 			if you.EliminatedCause != "" {
 				payOffTable[youMove][otherMoves] = -1.0
 			} else {
-				_, score := RealMinMax(newBoard, youID, depth-1)
+				_, score := RealMinMax(ruleset, newBoard, youID, depth-1)
 				payOffTable[youMove][otherMoves] = score
 			}
 		}

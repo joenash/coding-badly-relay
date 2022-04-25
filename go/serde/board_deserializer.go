@@ -1,6 +1,7 @@
 package serde
 
 import (
+	"fmt"
 	"syscall/js"
 
 	"github.com/BattlesnakeOfficial/rules"
@@ -18,6 +19,25 @@ func toPointArrayJS(arr js.Value) []rules.Point {
 	}
 
 	return positions
+}
+
+func RulesetFromJSValue(gamejs js.Value) rules.Ruleset {
+	game := gamejs.Get("game")
+	ruleset := game.Get("ruleset")
+	name := ruleset.Get("name").String()
+	settings := ruleset.Get("settings")
+
+	return rules.NewRulesetBuilder().WithParams(map[string]string{
+		// Used to select the ruleset type
+		"name": name,
+
+		// Assume no future food or hazard spawns, because they're random and we don't have the seed.
+		"foodSpawnChance":   "0",
+		"minimumFood":       "0",
+		"shrinkEveryNTurns": "0",
+
+		"damagePerTurn": fmt.Sprint(settings.Get("hazardDamagePerTurn").Int()),
+	}).Ruleset()
 }
 
 func BoardFromJSValue(gamejs js.Value) rules.BoardState {
